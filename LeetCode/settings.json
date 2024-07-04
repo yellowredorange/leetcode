@@ -1,0 +1,13 @@
+{
+  "files.exclude": {
+      "**/bin": true,
+      "**/obj": true
+  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+      "source.fixAll": true
+  },
+  "omnisharp.useModernNet": true,
+  "omnisharp.path": "latest",
+  "omnisharp.organizeImportsOnFormat": true
+}
