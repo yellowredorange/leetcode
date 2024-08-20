@@ -1,11 +1,9 @@
 using System.Linq;
 using System;
-
-
-public class Solution
-{
-  public int RomanToInt(string s)
-  {
+using System.Collections;
+namespace RomanToInteger;
+public class Solution {
+  public int RomanToInt(string s) {
     Hashtable romanTable = new Hashtable();
     int sum = 0;
     romanTable.Add("I", 1);
@@ -21,22 +19,17 @@ public class Solution
     romanTable.Add("XC", 90);
     romanTable.Add("CD", 400);
     romanTable.Add("CM", 900);
-    for (int i = 0; i < s.Length; i++)
-    {
-      if (i < s.Length - 1 && romanTable.ContainsKey(s.Substring(i, 2)))
-      {
+    for (int i = 0; i < s.Length; i++) {
+      if (i < s.Length - 1 && romanTable.ContainsKey(s.Substring(i, 2))) {
         sum += (int)romanTable[s.Substring(i, 2)];
         i++;
-      }
-      else
-      {
+      } else {
         sum += (int)romanTable[s.Substring(i, 1)];
       }
     }
     return sum;
   }
-  public int RomanToIntTwo(string s)
-  {
+  public int RomanToIntTwo(string s) {
     Dictionary<char, int> romanTable = new Dictionary<char, int>
         {
             { 'I', 1 },
@@ -56,14 +49,12 @@ public class Solution
          .Replace("CM", "DCCCC");
 
     int sum = 0;
-    for (int i = 0; i < s.Length; i++)
-    {
+    for (int i = 0; i < s.Length; i++) {
       sum += romanTable[s[i]];
     }
     return sum;
   }
-  public int RomanToIntThree(string s)
-  {
+  public int RomanToIntThree(string s) {
     Dictionary<char, int> romanTable = new Dictionary<char, int>
         {
             { 'I', 1 },
@@ -75,14 +66,10 @@ public class Solution
             { 'M', 1000 }
         };
     int sum = 0;
-    for (int i = 0; i < s.Length; i++)
-    {
-      if (i < s.Length - 1 && romanTable[s[i]] < romanTable[s[i + 1]])
-      {
+    for (int i = 0; i < s.Length; i++) {
+      if (i < s.Length - 1 && romanTable[s[i]] < romanTable[s[i + 1]]) {
         sum -= romanTable[s[i]];
-      }
-      else
-      {
+      } else {
         sum += romanTable[s[i]];
       }
     }

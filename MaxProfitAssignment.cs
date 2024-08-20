@@ -1,7 +1,7 @@
-public class Solution
-{
-  public int MaxProfitAssignment(int[] difficulty, int[] profit, int[] worker)
-  {
+namespace MaxProfitAssignment;
+
+public class Solution {
+  public int MaxProfitAssignment(int[] difficulty, int[] profit, int[] worker) {
     int[] sortIndices = profit
         .Select((value, index) => new { Value = value, Index = index })
         .OrderByDescending(x => x.Value)
@@ -15,12 +15,9 @@ public class Solution
     int limit = 0;
     int upperLimit = difficultySorted.Length;
     int initial = 0;
-    for (var i = 0; i < workerSorted.Length; i++)
-    {
-      for (var y = initial; y < upperLimit; y++)
-      {
-        if (workerSorted[i] < difficultySorted[y])
-        {
+    for (var i = 0; i < workerSorted.Length; i++) {
+      for (var y = initial; y < upperLimit; y++) {
+        if (workerSorted[i] < difficultySorted[y]) {
           continue;
         }
         sum += profitSorted[y];
