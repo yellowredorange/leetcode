@@ -1,0 +1,25 @@
+導航與編輯
+Ctrl + R: 切換最近使用的工作區
+F12: 跳至定義
+Alt + ←: 回到前一位置
+F8: 下一個錯誤/警告
+Ctrl + G: 跳至指定行
+Ctrl + D: 選擇相同字詞（多光標）
+Alt + ↑ / ↓: 上/下移動當前行
+Ctrl + Enter: 插入下一行
+Ctrl + Shift + Enter: 插入上一行
+Ctrl + Shift + K: 刪除該行
+
+檔案與工作區管理
+Ctrl + B: 切換檔案樹顯示
+Ctrl + Shift + E: 焦點移至檔案樹
+Ctrl + PgUp / PgDn: 切換分頁
+自定: Ctrl + Shift + N: 新建資料夾
+自定: Ctrl + N: 新建檔案
+
+其他常用快捷鍵
+Shift + 方向鍵: 按字元/行選擇文本
+Ctrl + Shift + 方向鍵: 按單詞選擇文本
+Ctrl + P: 快速打開文件/跳至符號
+Ctrl + 1/2/3: 切換編輯器視窗
+Ctrl + Shift + P: 打開命令面板
