@@ -1,4 +1,5 @@
-/* 
+namespace RemoveLinkedListElements;
+/*
 * ListNode is a public Reference Type. When I assgin a reference type to another variable, both variables share same object. That's why I can use 'current.next=' to change those original ListNodes.
 ? What's the difference between ShallowCopy and DeepCopy?
 * ShallowCopy 對於 Value Types 都能直接 assgin the value，ex: int, string, bool, Structs，詳細的 Value Type 筆記放在最下面。但對於 Reference Type 只會讓他們指向同一個物件，所以更改會連動。
