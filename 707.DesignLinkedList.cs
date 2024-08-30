@@ -21,6 +21,18 @@ public class MyLinkedList {
   public MyLinkedList() {
     dummyhead = new ListNode();
   }
+  // 列印連結串列的內容
+  public void PrintLinkedList(MyLinkedList linkedList) {
+    var current = linkedList.GetHead();
+    while (current != null) {
+      Console.Write(current.val + " -> ");
+      current = current.next;
+    }
+    Console.WriteLine("null");
+  }
+  private ListNode? GetHead() {
+    return dummyhead.next;
+  }
   public int Get(int index) {
     if (index < 0) {
       return -1;
@@ -103,9 +115,11 @@ public class MyLinkedList {
     if (dummyhead.next == null || dummyhead.next.next == null) {
       return;
     }
-    ListNode previous = dummyhead.next;
-    previous.next = null;
-    ListNode current = dummyhead.next.next;
+    // ListNode previous = dummyhead.next; //
+    // previous.next = null; //這樣會切斷dummyhead.next，後面都找不到dummyhead剩下的一串，但又需要讓previous接著null才有最後終點，所以應該要直接讓previous一開始為null，極為類似dummyhead的終點。
+    // ListNode current = dummyhead.next.next;
+    ListNode previous=null;
+    ListNode current=dummyhead.next;
     while (current.next != null) {
       ListNode temp = current.next;
       current.next = previous;
