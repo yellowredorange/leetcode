@@ -138,11 +138,11 @@ public class MyLinkedList {
     ReverseListRecursion(null, cur);
   }
 
-  public void SwapPairs() {
+  public void SwapPairsMyWay() {
     if (dummyhead.next == null || dummyhead.next.next == null) {
       return;
     }
-    ListNode cur = dummyhead;
+    ListNode cur = dummyhead; //底下會因為cur.next變成secondNode，所以不需要特別處理頭部的問題
     while (cur.next != null && cur.next.next != null) {
       ListNode firstNode = cur.next;
       ListNode secondNode = cur.next.next;
@@ -150,6 +150,71 @@ public class MyLinkedList {
       firstNode.next = secondNode.next; //先動最右邊的人
       secondNode.next = firstNode; //再斷鏈
       cur = firstNode; //cur.next和cur.next.next就會是下一對
+
+
     }
+  }
+  // 虚拟头结点
+  public void SwapPairsOtherWay() {
+    var dummyHead = new ListNode();
+
+    ListNode cur = dummyHead;
+    while (cur.next != null && cur.next.next != null) {
+      ListNode tmp1 = cur.next;
+      ListNode tmp2 = cur.next.next.next;
+
+      cur.next = cur.next.next;
+      cur.next.next = tmp1;
+      cur.next.next.next = tmp2;
+
+      cur = cur.next.next;
+      /*
+      Step 1:
+
+      tmp1 = 1
+      tmp2 = 3
+      cur -> 1 -> 2 -> 3 -> 4 -> ...
+
+      Step 2: 交換節點
+      cur.next = cur.next.next;  // cur.next 指向 2
+      操作後，節點的引用關係如下：
+
+      cur -> 2 -> 3 -> 4 -> ...
+      tmp1 = 1
+      tmp2 = 3
+      在這一步，cur 已經指向了節點 2，但是節點 1 還沒有被重新連線。此時節點 1 被“斷鏈”了，因為它不再被任何節點指向。
+
+      Step 3: 調整指向
+
+      cur.next.next = tmp1; // 將 2 的 next 指向 1
+      操作後，節點的引用關係如下：
+
+      cur -> 2 -> 1    3 -> 4 -> ...
+      tmp2 = 3
+      現在，1 被連線回連結串列，變成了 2 的後繼節點。
+
+      Step 4: 連線下一個待處理節點
+
+      cur.next.next.next = tmp2; // 將 1 的 next 指向 3
+      操作後，節點的引用關係如下：
+
+      cur -> 2 -> 1 -> 3 -> 4 -> ...
+      */
+    }
+  }
+  public void DeleteAtIndexBackwards(int index) {
+    ListNode fastNode = dummyhead;
+    ListNode slowNode = dummyhead;
+    for (int i = 0; i < index; i++) { //原本這裡用了index跟while去判斷index到了沒，但其實簡化成for以後，在裡面再塞一個fastnode.next==null直接讓他return會更簡約簡化。
+      if (fastNode.next == null) {
+        return;
+      }
+      fastNode = fastNode.next;
+    }
+    while (fastNode.next != null) {
+      fastNode = fastNode.next;
+      slowNode = slowNode.next;
+    }
+    slowNode.next = slowNode.next.next;
   }
 }
