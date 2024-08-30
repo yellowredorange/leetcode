@@ -137,4 +137,19 @@ public class MyLinkedList {
     ListNode cur = dummyhead.next;
     ReverseListRecursion(null, cur);
   }
+
+  public void SwapPairs() {
+    if (dummyhead.next == null || dummyhead.next.next == null) {
+      return;
+    }
+    ListNode cur = dummyhead;
+    while (cur.next != null && cur.next.next != null) {
+      ListNode firstNode = cur.next;
+      ListNode secondNode = cur.next.next;
+      cur.next = secondNode; //cur最左的人先斷練
+      firstNode.next = secondNode.next; //先動最右邊的人
+      secondNode.next = firstNode; //再斷鏈
+      cur = firstNode; //cur.next和cur.next.next就會是下一對
+    }
+  }
 }
