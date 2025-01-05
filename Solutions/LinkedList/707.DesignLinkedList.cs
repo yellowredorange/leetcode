@@ -5,8 +5,6 @@
 
 
 */
-
-namespace DesignLinkedList;
 public class MyLinkedList {
   // 因為 Listnode 僅供 MyLinkedList 使用所以可以為 private
   private class ListNode {
@@ -118,8 +116,8 @@ public class MyLinkedList {
     // ListNode previous = dummyhead.next; //
     // previous.next = null; //這樣會切斷dummyhead.next，後面都找不到dummyhead剩下的一串，但又需要讓previous接著null才有最後終點，所以應該要直接讓previous一開始為null，極為類似dummyhead的終點。
     // ListNode current = dummyhead.next.next;
-    ListNode previous=null;
-    ListNode current=dummyhead.next;
+    ListNode previous = null;
+    ListNode current = dummyhead.next;
     while (current.next != null) {
       ListNode temp = current.next;
       current.next = previous;
